@@ -1,4 +1,6 @@
-const AdminPage = require('./AdminPage');
+const AdminPage = require("./AdminPage");
+const DirectoryPage = require("./DirectoryPage");
+const RecruitmentPage = require("./RecruitmentPage");
 
 class SidePanel {
   /**
@@ -6,14 +8,23 @@ class SidePanel {
    */
   constructor(page) {
     this.page = page;
-    this.adminNav = this.page.locator('span.oxd-main-menu-item--name', { hasText: "Admin" })
+    this.nav = (nav) =>
+      this.page.locator("span.oxd-main-menu-item--name", { hasText: nav });
   }
 
-  async gotoAdmin() {
-    await this.adminNav.click();
-    return new AdminPage(this.page);
-  }
+  async gotoPage(p) {
+    await this.nav(p).click();
+    if (p == "Admin") {
+      return new AdminPage(this.page);
+    }
+     if (p == "Directory") {
+      return new DirectoryPage(this.page);
+    }
+    if(p=="Recruitment"){
+            return new RecruitmentPage(this.page);
 
+    }
+  }
 }
 
 module.exports = { SidePanel };

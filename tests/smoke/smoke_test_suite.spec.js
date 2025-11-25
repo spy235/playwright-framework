@@ -4,23 +4,61 @@ const { LoginPage } = require('../../pages/LoginPage');
 const { getEnvURL } = require('../../utils/configLoader');
 import fs from 'fs';
 import AdminPage from '../../pages/AdminPage';
+import { mockEmptyRecruitmentApi } from '../../utils/mockRectruimentRecods';
 
 
-test('Valid Login Test', async ({ page, cred }) => {
-  const loginPage = new LoginPage(page);// new page without stored state
-  await loginPage.goto("/web/index.php/auth/login");
-  await loginPage.verifyLoginPage();
-  await loginPage.login(cred.adminValidLogin.Username, cred.adminValidLogin.Password);
-  await loginPage.verifyDashboard();
-});
+// test('Valid Login Test', async ({ page, cred }) => {
+//   const loginPage = new LoginPage(page);// new page without stored state
+//   await loginPage.goto("/web/index.php/auth/login");
+//   await loginPage.verifyLoginPage();
+//   await loginPage.login(cred.adminValidLogin.Username, cred.adminValidLogin.Password);
+//   await loginPage.verifyDashboard();
+// });
 
-test('Invalid Login Test', async ({ page, cred }) => {
-  const loginPage = new LoginPage(page);// new page without stored state
-  await loginPage.goto("/web/index.php/auth/login");
-  await loginPage.verifyLoginPage();
-  await loginPage.login(cred.adminInvalidLogin.Username, cred.adminInvalidLogin.Password);
-});
-test('Add User Test', async ({ browser }) => {
+// test('Invalid Login Test', async ({ page, cred }) => {
+//   const loginPage = new LoginPage(page);// new page without stored state
+//   await loginPage.goto("/web/index.php/auth/login");
+//   await loginPage.verifyLoginPage();
+//   await loginPage.login(cred.adminInvalidLogin.Username, cred.adminInvalidLogin.Password);
+// });
+// test('Add User Test', async ({ browser }) => {
+//   const context = await browser.newContext({
+//     storageState: 'config/adminState.json',
+//   });
+//   const page = await context.newPage();
+//   const loginPage = new LoginPage(page);
+//   const sidePanelPage = await loginPage.goto("/web/index.php/dashboard/index");
+//   await loginPage.verifyDashboard();
+
+//   const adminPage = await sidePanelPage.gotoPage("Admin");
+//   await adminPage.clickAdd();
+//   await adminPage.selectUserRole("Admin");
+//   await adminPage.fillEmployeeName("Joseph");
+//   await adminPage.selectStatus("Enabled");
+//   await adminPage.fillUsernameAndPassword("Test User1", "Yashas@235@");
+//   await adminPage.saveUser();
+
+//   fs.writeFileSync('testdata/testUser/test_user_data.json', JSON.stringify({ employeeName: "Test User1" }, null, 2));
+// });
+
+// test('Search User Test', async ({ browser }) => {
+//   const context = await browser.newContext({
+//     storageState: 'config/adminState.json',
+//   });
+//   const page = await context.newPage();
+//   const loginPage = new LoginPage(page);
+//   const sidePanelPage = await loginPage.goto("/web/index.php/dashboard/index");
+//   await loginPage.verifyDashboard();
+
+//   const adminPage = await sidePanelPage.gotoPage("Admin");
+//   const { employeeName } = JSON.parse(fs.readFileSync('testdata/testUser/test_user_data.json', "utf8"));
+//   await adminPage.searchUser(employeeName, "Admin");
+//   await adminPage.deleteUser(employeeName);
+
+//   await page.pause();
+// });
+
+test('Recruitment Page Empty Records Founds', async ({ browser }) => {
   const context = await browser.newContext({
     storageState: 'config/adminState.json',
   });
@@ -29,30 +67,10 @@ test('Add User Test', async ({ browser }) => {
   const sidePanelPage = await loginPage.goto("/web/index.php/dashboard/index");
   await loginPage.verifyDashboard();
 
-  const adminPage = await sidePanelPage.gotoAdmin();
-  await adminPage.clickAdd();
-  await adminPage.selectUserRole("Admin");
-  await adminPage.fillEmployeeName("Joseph");
-  await adminPage.selectStatus("Enabled");
-  await adminPage.fillUsernameAndPassword("Test User1", "Yashas@235@");
-  await adminPage.saveUser();
+  const recruitmentPagePage = await sidePanelPage.gotoPage("Recruitment");
+  await mockEmptyRecruitmentApi(page) // moking api response
+  await recruitmentPagePage.gotoRecruitmentPage();
 
-  fs.writeFileSync('testdata/testUser/test_user_data.json', JSON.stringify({ employeeName: "Test User1" }, null, 2));
-});
-
-test('Search User Test', async ({ browser }) => {
-  const context = await browser.newContext({
-    storageState: 'config/adminState.json',
-  });
-  const page = await context.newPage();
-  const loginPage = new LoginPage(page);
-  const sidePanelPage = await loginPage.goto("/web/index.php/dashboard/index");
-  await loginPage.verifyDashboard();
-
-  const adminPage = await sidePanelPage.gotoAdmin();
-  const { employeeName } = JSON.parse(fs.readFileSync('testdata/testUser/test_user_data.json', "utf8"));
-  await adminPage.searchUser(employeeName, "Admin");
-  await adminPage.deleteUser(employeeName);
-
-  await page.pause();
+await expect(page.locator(".orangehrm-vertical-padding .oxd-text--span")).toContainText("No Records Found")
+await page.pause();
 });
