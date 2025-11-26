@@ -1,5 +1,6 @@
 const AdminPage = require("./AdminPage");
 const DirectoryPage = require("./DirectoryPage");
+const PIMPage = require("./PIMPage");
 const RecruitmentPage = require("./RecruitmentPage");
 
 class SidePanel {
@@ -23,6 +24,9 @@ class SidePanel {
     if(p=="Recruitment"){
             return new RecruitmentPage(this.page);
 
+    }
+    if(p=="PIM"){
+        return new PIMPage(this.page);
     }
   }
 }

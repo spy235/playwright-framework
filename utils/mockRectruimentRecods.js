@@ -21,3 +21,13 @@ export async function mockEmptyRecruitmentApi(page) {
     }
   );
 }
+export async function mockRequestDetailsApi(page) {
+  const requestEdp = /employees\/\d+\/personal-details/;
+
+  await page.route(requestEdp, route => {
+    const newUrl =
+      "https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/pim/employees/11111111/personal-details";
+
+    route.continue({ url: newUrl });
+  });
+}
