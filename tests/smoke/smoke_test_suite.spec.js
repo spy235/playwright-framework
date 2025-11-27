@@ -2,7 +2,8 @@ const { expect } = require('@playwright/test');
 const { test } = require('../../fixtures/baseFixtures');
 const { LoginPage } = require('../../pages/LoginPage');
 import { mockEmptyRecruitmentApi, mockRequestDetailsApi } from '../../utils/mockRectruimentRecods';
-
+import { verifySnapshot, verifySnapshotWholePage } from '../../utils/screenshotHelper';
+import fs from "fs"
 
 test('Valid Login Test', async ({ page, cred }) => {
   const loginPage = new LoginPage(page);// new page without stored state
@@ -91,3 +92,30 @@ test('PIM Page View Person details mocking with in valid data', async ({ browser
 });
 
 //https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/pim/employees/86/personal-details
+
+test("Visual Testing Login Page", async ({ context }) => {
+  const page = await context.newPage();
+  const loginPage = new LoginPage(page);
+  await loginPage.goto("/web/index.php/auth/login");
+  // ensure page fully loaded
+  await page.waitForLoadState("networkidle");
+  // take full-page snapshot AFTER stable state
+  await verifySnapshotWholePage(page, "login_page.png");
+});
+
+
+test("Visual Testing Element", async ({ browser }) => {
+  const context = await browser.newContext({
+    storageState: 'config/adminState.json',
+  });
+  const page = await context.newPage();
+  const loginPage = new LoginPage(page);
+  const sidePanelPage = await loginPage.goto("/web/index.php/dashboard/index");
+  await loginPage.verifyDashboard();
+  const pimPage = await sidePanelPage.gotoPage("PIM");
+  await pimPage.gotoDetails();
+  await verifySnapshot(
+    page.locator(".orangehrm-background-container .oxd-table-filter"),
+    "tests/smoke/tests-screenshots-inputbox-chromium-win32.png"
+  );
+});
