@@ -1,0 +1,89 @@
+[2025-12-05 10:21:41] [INFO]: Starting Valid Login Test
+[2025-12-05 10:21:41] [DEBUG]: Navigating to login page
+[2025-12-05 10:21:42] [INFO]: Starting Valid Login Test
+[2025-12-05 10:21:42] [DEBUG]: Navigating to login page
+[2025-12-05 10:21:43] [INFO]: Starting Valid Login Test
+[2025-12-05 10:21:44] [DEBUG]: Navigating to login page
+[2025-12-05 10:21:44] [DEBUG]: Verifying login page
+[2025-12-05 10:21:44] [INFO]: Performing login with valid credentials
+[2025-12-05 10:21:45] [ERROR]: Valid Login Test failed: Error: page.goto: Target page, context or browser has been closed
+Call log:
+[2m  - navigating to "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login", waiting until "load"[22m
+
+[2025-12-05 10:21:45] [DEBUG]: Verifying dashboard
+[2025-12-05 10:21:45] [DEBUG]: Verifying login page
+[2025-12-05 10:21:45] [ERROR]: Valid Login Test failed: Error: locator.waitFor: Target page, context or browser has been closed
+[2025-12-05 10:21:45] [INFO]: Starting Invalid Login Test
+[2025-12-05 10:21:45] [DEBUG]: Navigating to login page
+[2025-12-05 10:21:46] [INFO]: Starting Invalid Login Test
+[2025-12-05 10:21:46] [DEBUG]: Navigating to login page
+[2025-12-05 10:21:46] [INFO]: Performing login with valid credentials
+[2025-12-05 10:21:47] [DEBUG]: Verifying dashboard
+[2025-12-05 10:21:48] [ERROR]: Invalid Login Test failed: Error: page.goto: Target page, context or browser has been closed
+Call log:
+[2m  - navigating to "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login", waiting until "load"[22m
+
+[2025-12-05 10:21:48] [DEBUG]: Verifying login page
+[2025-12-05 10:21:48] [ERROR]: Invalid Login Test failed: Error: locator.waitFor: Target page, context or browser has been closed
+Call log:
+[2m  - waiting for locator('h5.oxd-text') to be visible[22m
+
+[2025-12-05 10:21:48] [ERROR]: Valid Login Test failed: Error: locator.waitFor: Target page, context or browser has been closed
+Call log:
+[2m  - waiting for locator('h6.oxd-text') to be visible[22m
+[2m    - waiting for navigation to finish...[22m
+[2m    - navigated to "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"[22m
+
+[2025-12-05 10:22:50] [INFO]: Starting Valid Login Test
+[2025-12-05 10:22:50] [DEBUG]: Navigating to login page
+[2025-12-05 10:22:53] [DEBUG]: Verifying login page
+[2025-12-05 10:22:53] [INFO]: Performing login with valid credentials
+[2025-12-05 10:22:55] [DEBUG]: Verifying dashboard
+[2025-12-05 10:22:56] [INFO]: Valid Login Test completed successfully
+[2025-12-05 10:22:57] [INFO]: Starting Invalid Login Test
+[2025-12-05 10:22:57] [DEBUG]: Navigating to login page
+[2025-12-05 10:23:00] [DEBUG]: Verifying login page
+[2025-12-05 10:23:01] [WARN]: Performing login with invalid credentials
+[2025-12-05 10:23:01] [INFO]: Invalid Login Test completed
+[2025-12-05 10:23:02] [INFO]: Starting Add User Test
+[2025-12-05 10:23:03] [DEBUG]: Navigating to dashboard
+[2025-12-05 10:23:07] [DEBUG]: Clicking Add button
+[2025-12-05 10:23:10] [INFO]: Filling user details
+[2025-12-05 10:23:13] [INFO]: Add User Test completed successfully
+[2025-12-05 10:23:13] [INFO]: Starting Search User Test
+[2025-12-05 10:23:18] [DEBUG]: Searching for user: Test User1
+[2025-12-05 10:23:20] [INFO]: Deleting user
+[2025-12-05 10:23:20] [INFO]: Search User Test completed
+[2025-12-05 10:23:20] [INFO]: Starting Recruitment Page Empty Records Test
+[2025-12-05 10:23:26] [DEBUG]: Mocking empty recruitment API
+[2025-12-05 10:23:31] [INFO]: Recruitment Page Empty Records Test completed
+[2025-12-05 10:23:31] [INFO]: Starting PIM Page Details Test
+[2025-12-05 10:23:40] [DEBUG]: Mocking request details API
+[2025-12-05 10:23:42] [INFO]: PIM Page Details Test completed
+[2025-12-05 10:31:04] [INFO]: Starting Valid Login Test
+[2025-12-05 10:31:04] [DEBUG]: Navigating to login page
+[2025-12-05 10:31:07] [DEBUG]: Verifying login page
+[2025-12-05 10:31:08] [INFO]: Performing login with valid credentials
+[2025-12-05 10:31:09] [DEBUG]: Verifying dashboard
+[2025-12-05 10:31:11] [INFO]: Valid Login Test completed successfully
+[2025-12-05 10:31:45] [INFO]: Starting Add User Test
+[2025-12-05 10:31:47] [DEBUG]: Navigating to dashboard
+[2025-12-05 10:31:52] [DEBUG]: Clicking Add button
+[2025-12-05 10:31:55] [INFO]: Filling user details
+[2025-12-05 10:31:58] [INFO]: Add User Test completed successfully
+[2025-12-05 10:31:58] [INFO]: Starting Search User Test
+[2025-12-05 10:32:03] [DEBUG]: Searching for user: Test User1
+[2025-12-05 10:32:05] [INFO]: Deleting user
+[2025-12-05 10:32:06] [INFO]: Search User Test completed
+[2025-12-05 10:32:06] [INFO]: Starting Recruitment Page Empty Records Test
+[2025-12-05 10:32:12] [DEBUG]: Mocking empty recruitment API
+[2025-12-05 10:32:18] [INFO]: Recruitment Page Empty Records Test completed
+[2025-12-05 10:32:18] [INFO]: Starting PIM Page Details Test
+[2025-12-05 10:32:27] [DEBUG]: Mocking request details API
+[2025-12-05 10:32:28] [INFO]: PIM Page Details Test completed
+[2025-12-05 10:32:28] [INFO]: Starting Visual Testing Login Page
+[2025-12-05 10:32:36] [DEBUG]: Taking full-page snapshot
+[2025-12-05 10:32:36] [INFO]: Visual Testing Login Page completed
+[2025-12-05 10:32:40] [INFO]: Starting Visual Testing Element
+[2025-12-05 10:32:50] [DEBUG]: Taking element snapshot
+[2025-12-05 10:32:51] [INFO]: Visual Testing Element completed

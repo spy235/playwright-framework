@@ -1,0 +1,19 @@
+[2025-12-05 10:21:45] [ERROR]: Valid Login Test failed: Error: page.goto: Target page, context or browser has been closed
+Call log:
+[2m  - navigating to "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login", waiting until "load"[22m
+
+[2025-12-05 10:21:45] [ERROR]: Valid Login Test failed: Error: locator.waitFor: Target page, context or browser has been closed
+[2025-12-05 10:21:48] [ERROR]: Invalid Login Test failed: Error: page.goto: Target page, context or browser has been closed
+Call log:
+[2m  - navigating to "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login", waiting until "load"[22m
+
+[2025-12-05 10:21:48] [ERROR]: Invalid Login Test failed: Error: locator.waitFor: Target page, context or browser has been closed
+Call log:
+[2m  - waiting for locator('h5.oxd-text') to be visible[22m
+
+[2025-12-05 10:21:48] [ERROR]: Valid Login Test failed: Error: locator.waitFor: Target page, context or browser has been closed
+Call log:
+[2m  - waiting for locator('h6.oxd-text') to be visible[22m
+[2m    - waiting for navigation to finish...[22m
+[2m    - navigated to "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"[22m
+

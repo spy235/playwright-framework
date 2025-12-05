@@ -10,3 +10,13 @@ export function getEnvURL() {
 
   return url;
 }
+
+export function getTestPath(){
+  const env = (process.env.TYPE || "smoke").trim();
+  const testType = envs[env];
+
+  if (!testType) {
+    throw new Error(`Test Type '${env}' not found in environments_url.json`);
+  }
+  return testType;
+}

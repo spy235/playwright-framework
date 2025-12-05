@@ -1,10 +1,10 @@
 // @ts-check
 import { defineConfig, devices } from "@playwright/test";
-import { getEnvURL } from "./utils/configLoader";
+import { getEnvURL, getTestPath } from "./utils/configLoader";
 import { getBrowserProjects } from "./utils/browserSelector";
 
 export default defineConfig({
-  testDir: "./tests",
+  testDir: getTestPath(),
   globalSetup: require.resolve("./setup/global-setup.js"),
   globalTeardown: require.resolve("./setup/global-teardown.js"),
   reporter: [
